@@ -1,0 +1,19 @@
+{% block content %}
+
+<div>
+        <h2>Products category {{ category_name }}</h2>
+    <div>    
+        {% for product in products %}
+            <br>
+            {% if product.images.all.0 %}
+                <img src="/media/{{ product.images.all.0 }}" alt="">
+            {% endif %}
+            <p>{{ product.name }}</p>
+            <p>${{ product.price }}</p>
+            <p>In stock: {{ product.stock_count }}</p>
+        {% empty %}
+            <p>Nothing to show!</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
